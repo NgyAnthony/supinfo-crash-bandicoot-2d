@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
         if (remainingLives <= 0 & isAlive == false)
         {
             GameManager.PlayerLost();
-            AudioManager.PlayLostAudio();
+            // TODO AudioManager.PlayLostAudio();
 
             
         //Tell the Game Manager that the player died and tell the Audio Manager to play
@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         } else if (remainingLives > 0 & isAlive)
         {
             GameManager.PlayerDied();
-            AudioManager.PlayDeathAudio();
+            // TODO AudioManager.PlayDeathAudio();
 
         }
     }
