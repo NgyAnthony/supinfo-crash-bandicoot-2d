@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject deathVFXPrefab;	//The visual effects for player death
     
     private bool isAlive = true;
-    private int remainingLives = 1;
+    private int remainingLives = 0;
     private int remainingShields = 0;
     private int wumpasNumber = 0;
     
@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //Tell the Game Manager that the player lost and tell the Audio Manager to play
         //the lost audio
-        if (remainingLives <= 0 & isAlive == false)
+        if (remainingLives < 0 & isAlive == false)
         {
             GameManager.PlayerLost();
             // TODO AudioManager.PlayLostAudio();
@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
             
         //Tell the Game Manager that the player died and tell the Audio Manager to play
         //the death audio
-        } else if (remainingLives > 0 & isAlive)
+        } else if (remainingLives >= 0 & isAlive == false)
         {
             GameManager.PlayerDied();
             // TODO AudioManager.PlayDeathAudio();

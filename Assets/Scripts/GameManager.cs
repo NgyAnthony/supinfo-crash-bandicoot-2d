@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour
 	}
 
 	public static void PlayerDied()
-	{
+	{	
+		Debug.Log("PLAYER DIED");
 		//If there is no current Game Manager, exit
 		if (current == null)
 			return;
@@ -87,30 +88,18 @@ public class GameManager : MonoBehaviour
 
 	public static void PlayerLost()
 	{	
-		
 		//If there is no current Game Manager, exit
 		if (current == null)
 			return;
-		
-		//The game is now over
-		current.isGameOver = true;
-		
-		//If we have a scene fader, tell it to fade the scene out
-		if(current.sceneFader != null)
-			current.sceneFader.FadeSceneOut();
-		
+		Debug.Log("LostUI triggered");
 		//Display you lost text
 		UIManager.DisplayYouLostText();
 		
-		//Ask the player if he wants to play again, if so play the scene again. If not close the game.
-		if (UIManager.PlayAgain())
-		{
-			current.Invoke("RestartScene", current.deathSequenceDuration);
-		}
-		else if (UIManager.StopPlaying())
-		{
-			Application.Quit();
-		}
+		Debug.Log("PLAYER LOST");
+
+		//The game is now over
+		current.isGameOver = true;
+
 	}
 	
 	public static void PlayerWon()
@@ -128,10 +117,16 @@ public class GameManager : MonoBehaviour
 		//TODO AudioManager.PlayWonAudio();
 	}
 
-	void RestartScene()
+	public static void RestartScene()
 	{
 		//Play the scene restart audio
 		// TODO AudioManager.PlaySceneRestartAudio();
+		
+		//Remove UI of replay question
+		UIManager.CleanUIonReplay();
+		
+		//Game isn't over anymore
+		current.isGameOver = false;
 
 		//Reload the current scene
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 

@@ -4,6 +4,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,10 +18,14 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI livesText;       //Text element showing the number of lives
     
     public TextMeshProUGUI timeText;		//Text element showing amount of time
-    public TextMeshProUGUI deathText;		//Text element showing number or deaths
     
-    public TextMeshProUGUI gameOverText;	//Text element showing the Game Over message
+    public TextMeshProUGUI deathText;		//Text element showing number or deaths
     public TextMeshProUGUI youLost;         //Text element showing the You Lost message
+    public GameObject playAgainButton;
+    public GameObject quitButton;
+    public Image deathImage;
+
+    public TextMeshProUGUI gameOverText;	//Text element showing the Game Over message
 
     private void Awake()
     {
@@ -98,16 +103,29 @@ public class UIManager : MonoBehaviour
 
         //Show the you lost text
         current.youLost.enabled = true;
-    }
-    
-    public static bool PlayAgain()
-    {
-        return true;
+        current.deathImage.enabled = true;
+        current.playAgainButton.SetActive(true);
+        current.quitButton.SetActive(true);
     }
 
-    public static bool StopPlaying()
+    public static void CleanUIonReplay()
     {
-        return true;
+        current.youLost.enabled = false;
+        current.deathImage.enabled = false;
+        current.playAgainButton.SetActive(false);
+        current.quitButton.SetActive(false);
+    }
+    
+    
+    public void PlayAgain()
+    {
+        Debug.Log("PLAY AGAIN");
+        GameManager.RestartScene();
+    }
+
+    public void StopPlaying()
+    {
+        Application.Quit();
     }
     
     public static void DisplayGameOverText()
