@@ -6,7 +6,7 @@ using UnityEngine;
 public class SceneFader : MonoBehaviour
 {
 	Animator anim;		//Reference to the Animator component
-	int fadeParamID;    //The ID of the animator parameter that fades the image
+	int fadeParamID;    //The ID of the animator parameter that fades the image out
 
 	void Start()
 	{
@@ -15,7 +15,7 @@ public class SceneFader : MonoBehaviour
 
 		//Get the integer hash of the "Fade" parameter.
 		fadeParamID = Animator.StringToHash("Fade");
-
+		
 		//Register this Scene Fader with the Game Manager
 		GameManager.RegisterSceneFader(this);
 	}

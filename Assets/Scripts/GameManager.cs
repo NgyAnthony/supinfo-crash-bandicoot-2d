@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,11 +15,12 @@ public class GameManager : MonoBehaviour
 
 	SceneFader sceneFader;						//The scene fader
 
-	int numberOfDeaths;							//Number of times player has died
-	float totalGameTime;						//Length of the total game time
-	bool isGameOver;							//Is the game currently over?
-	
-
+	private int numberOfDeaths;							//Number of times player has died
+	private float totalGameTime;						//Length of the total game time
+	private bool isGameOver;							//Is the game currently over?
+	public static Vector2 checkpointPos;
+	private static Vector2 _originalPos;
+	private static GameObject playerCrash;
 	void Awake()
 	{
 		//If a Game Manager exists and this isn't it...
@@ -34,6 +36,10 @@ public class GameManager : MonoBehaviour
 
 		//Persis this object between scene reloads
 		DontDestroyOnLoad(gameObject);
+		_originalPos = gameObject.transform.position;
+		checkpointPos = _originalPos;
+		playerCrash = GameObject.Find("Crash");
+
 	}
 
 	void Update()
@@ -69,7 +75,7 @@ public class GameManager : MonoBehaviour
 
 	public static void PlayerDied()
 	{	
-		Debug.Log("PLAYER DIED");
+		
 		//If there is no current Game Manager, exit
 		if (current == null)
 			return;
@@ -78,12 +84,8 @@ public class GameManager : MonoBehaviour
 		current.numberOfDeaths++;
 		UIManager.UpdateDeathUI(current.numberOfDeaths);
 
-		//If we have a scene fader, tell it to fade the scene out
-		if(current.sceneFader != null)
-			current.sceneFader.FadeSceneOut();
-
-		//Invoke the RestartScene() method after a delay TODO: replace by go to spawn or checkpoint
-		current.Invoke("RestartScene", current.deathSequenceDuration);
+		//If we have a scene fader, tell it to fade the scene in
+		current.sceneFader.FadeSceneOut();
 	}
 
 	public static void PlayerLost()
@@ -91,12 +93,10 @@ public class GameManager : MonoBehaviour
 		//If there is no current Game Manager, exit
 		if (current == null)
 			return;
-		Debug.Log("LostUI triggered");
+		
 		//Display you lost text
 		UIManager.DisplayYouLostText();
 		
-		Debug.Log("PLAYER LOST");
-
 		//The game is now over
 		current.isGameOver = true;
 
@@ -127,8 +127,9 @@ public class GameManager : MonoBehaviour
 		
 		//Game isn't over anymore
 		current.isGameOver = false;
-
+		
 		//Reload the current scene
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
+	
 }

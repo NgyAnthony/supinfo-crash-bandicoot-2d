@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject deathVFXPrefab;	//The visual effects for player death
     
     private bool isAlive = true;
-    private int remainingLives = 0;
+    private int remainingLives = 2;
     private int remainingShields = 0;
     private int wumpasNumber = 0;
     
@@ -53,18 +53,21 @@ public class PlayerHealth : MonoBehaviour
         } else if (remainingLives >= 0 & isAlive == false)
         {
             GameManager.PlayerDied();
+            gameObject.transform.position = GameManager.checkpointPos;
+            gameObject.SetActive(true);
+            isAlive = true;
             // TODO AudioManager.PlayDeathAudio();
 
         }
     }
     
     private void HitTrap(Collider2D collision)
-    {
+    {    
         //If the collided object isn't on the Traps layer OR if the player isn't currently
         //alive, exit. This is more efficient than string comparisons using Tags
         if (collision.gameObject.layer != trapsLayer || !isAlive)
             return;
-
+        
         //Trap was hit, so set the player's alive state to false
         isAlive = false;
         remainingLives -= 1;
@@ -78,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void PickWumpa(Collider2D collision)
     {
+
         //If the collided object isn't on the Wumpas layer OR if the player isn't currently
         //alive, exit.
         if (collision.gameObject.layer != wumpasLayer || !isAlive)
@@ -101,6 +105,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void PickShield(Collider2D collision)
     {
+
         //If the collided object isn't on the Shields layer OR if the player isn't currently
         //alive, exit.
         if (collision.gameObject.layer != shieldsLayer || !isAlive)

@@ -119,7 +119,6 @@ public class UIManager : MonoBehaviour
     
     public void PlayAgain()
     {
-        Debug.Log("PLAY AGAIN");
         GameManager.RestartScene();
     }
 
