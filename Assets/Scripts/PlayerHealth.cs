@@ -112,7 +112,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.layer != bigWumpasLayer || !isAlive)
             return;
 
-        wumpasNumber += 100;
+        wumpasNumber += 10;
 
         //If the player gets 100 wumpas, reset the counter and add a life.
         if (wumpasNumber >= 100)
@@ -140,12 +140,11 @@ public class PlayerHealth : MonoBehaviour
         if (remainingShields < 3)
         {
             remainingShields += 1;
+            
+            //Destroy the picked shield.
+            Destroy(collision.gameObject);
         }
-        
-        //Destroy the picked shield.
-        Destroy(collision.gameObject);
-        
-        
+
         //Tell the manager to show the number of shields
         UIManager.ShieldUI(remainingShields);
     }
