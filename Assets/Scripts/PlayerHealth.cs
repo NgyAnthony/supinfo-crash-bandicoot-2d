@@ -8,15 +8,21 @@ public class PlayerHealth : MonoBehaviour
     public GameObject deathVFXPrefab;	//The visual effects for player death
     
     private bool isAlive = true;
+    private bool isAttacking = false;
+    
+    //Information on the player
     private int remainingLives = 2;
     private int remainingShields = 0;
     private int wumpasNumber = 0;
     
+    //References to layers
     private int trapsLayer;
     private int wumpasLayer;
     private int bigWumpasLayer;
     private int shieldsLayer;
     private int waterLayer;
+    
+    //Reference to animator
     private Animator animator;
 
     private void Awake()
@@ -97,21 +103,24 @@ public class PlayerHealth : MonoBehaviour
     
     private void HitWaterTrap(Collider2D collision)
     {    
-        //If the collided object isn't on the Traps layer OR if the player isn't currently
+        //If the collided object isn't on the Waters layer OR if the player isn't currently
         //alive, exit. This is more efficient than string comparisons using Tags
         if (collision.gameObject.layer != waterLayer || !isAlive)
             return;
         
-        //Trap was hit, so set the player's alive state to false
+        //Water was hit, so set the player's alive state to false
         isAlive = false;
         remainingLives -= 1;
         
+        //Activate the drowning animation
         animator.SetBool ("isDrowning", true);
     }
-
+    
+    //Activated in the animator
     private void DrowningIsOver()
     {
-        animator.SetBool ("isDrowning", false);
+        //Stop drowning
+        animator.SetBool ("isDrowning", false); 
         
         //Kill the player.
         DeathEvent();
