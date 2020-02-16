@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 	public static Vector2 checkpointPos;
 	private static Vector2 _originalPos;
 	private static GameObject playerCrash;
+	
 	void Awake()
 	{
 		//If a Game Manager exists and this isn't it...
@@ -36,9 +37,10 @@ public class GameManager : MonoBehaviour
 
 		//Persis this object between scene reloads
 		DontDestroyOnLoad(gameObject);
-		_originalPos = gameObject.transform.position;
-		checkpointPos = _originalPos;
 		playerCrash = GameObject.Find("Crash");
+		
+		_originalPos = playerCrash.transform.position;
+		checkpointPos = _originalPos;
 
 	}
 
@@ -130,6 +132,9 @@ public class GameManager : MonoBehaviour
 		
 		//Reload the current scene
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		
+		//Remove checkpoint
+		checkpointPos = _originalPos;
 	}
 	
 }
