@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -203,18 +204,26 @@ public class PlayerHealth : MonoBehaviour
         UIManager.ShieldUI(remainingShields);
     }
 
-    private void MakePlatformFall(Collider2D collision)
+    private void DetectPlatformFall(Collider2D collision)
     {
         
         //If the collided object isn't on the Shields layer OR if the player isn't currently
         //alive, exit.
         if (collision.gameObject.layer != fallingPlatformLayer || !isAlive)
             return;
-        
-        //Set the rigidbody2d to dynamic to make the platform fall
+        //Get the reference to the rigibody2d of the platform
         myPlatform = collision.gameObject.GetComponent<Rigidbody2D>();
+        
+        //Make the platform fall after 2s
+        Invoke("PlatformFall", 2f);
+    }
+
+    private void PlatformFall()
+    {
+        //Set the rigidbody2d to dynamic to make the platform fall
         myPlatform.bodyType = RigidbodyType2D.Dynamic;
     }
+    
     
     //At each collision, this function checks what it has hit and decides what it will do.
     public void OnTriggerEnter2D(Collider2D collision)
@@ -224,7 +233,7 @@ public class PlayerHealth : MonoBehaviour
         PickBigWumpa(collision);
         PickShield(collision);
         HitWaterTrap(collision);
-        MakePlatformFall(collision);
+        DetectPlatformFall(collision);
     }
 
 }
