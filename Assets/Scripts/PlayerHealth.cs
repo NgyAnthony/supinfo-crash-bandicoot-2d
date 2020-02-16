@@ -21,10 +21,13 @@ public class PlayerHealth : MonoBehaviour
     private int bigWumpasLayer;
     private int shieldsLayer;
     private int waterLayer;
-    
+    private int fallingPlatformLayer;
+
     //Reference to animator
     private Animator animator;
-
+    
+    //Platform
+    private Rigidbody2D myPlatform;
     private void Awake()
     {
         //Get animator reference
@@ -39,14 +42,16 @@ public class PlayerHealth : MonoBehaviour
         shieldsLayer = LayerMask.NameToLayer("Shields");
         bigWumpasLayer = LayerMask.NameToLayer("BigWumpas");
         waterLayer = LayerMask.NameToLayer("WaterTraps");
+        fallingPlatformLayer = LayerMask.NameToLayer("FallingPlatforms");
+        refreshUI();
     }
 
-    private void Update()
+    private void refreshUI()
     {
+        //Tell UImanager the number of remaining lives
         UIManager.LivesUI(remainingLives);
-        UIManager.WumpaUI(wumpasNumber);
+        UIManager.ShieldUI(remainingShields);
     }
-
     private void DeathEvent()
     {
         //Instantiate the death particle effects prefab at player's location
@@ -55,8 +60,6 @@ public class PlayerHealth : MonoBehaviour
         //Disable player game object
         gameObject.SetActive(false);
         
-        //Tell UImanager the number of remaining lives
-        UIManager.LivesUI(remainingLives);
     }
     
     private void DeadOrLost()
@@ -66,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
         if (remainingLives <= 0 & isAlive == false)
         {
             GameManager.PlayerLost();
+            refreshUI();
             // TODO AudioManager.PlayLostAudio();
 
             
@@ -77,6 +81,8 @@ public class PlayerHealth : MonoBehaviour
             gameObject.transform.position = GameManager.checkpointPos;
             gameObject.SetActive(true);
             isAlive = true;
+            
+            refreshUI();
             // TODO AudioManager.PlayDeathAudio();
 
         }
@@ -111,7 +117,7 @@ public class PlayerHealth : MonoBehaviour
         //Water was hit, so set the player's alive state to false
         isAlive = false;
         remainingLives -= 1;
-        
+
         //Activate the drowning animation
         animator.SetBool ("isDrowning", true);
     }
@@ -196,6 +202,19 @@ public class PlayerHealth : MonoBehaviour
         //Tell the manager to show the number of shields
         UIManager.ShieldUI(remainingShields);
     }
+
+    private void MakePlatformFall(Collider2D collision)
+    {
+        
+        //If the collided object isn't on the Shields layer OR if the player isn't currently
+        //alive, exit.
+        if (collision.gameObject.layer != fallingPlatformLayer || !isAlive)
+            return;
+        
+        //Set the rigidbody2d to dynamic to make the platform fall
+        myPlatform = collision.gameObject.GetComponent<Rigidbody2D>();
+        myPlatform.bodyType = RigidbodyType2D.Dynamic;
+    }
     
     //At each collision, this function checks what it has hit and decides what it will do.
     public void OnTriggerEnter2D(Collider2D collision)
@@ -205,6 +224,7 @@ public class PlayerHealth : MonoBehaviour
         PickBigWumpa(collision);
         PickShield(collision);
         HitWaterTrap(collision);
+        MakePlatformFall(collision);
     }
 
 }
