@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     //one in existence. This is often referred to as a "singleton" design pattern. Other
     //scripts access this one through its public static methods
     static UIManager current;
-
+    
     public TextMeshProUGUI wumpaText;		//Text element showing the number of wumpas
     public TextMeshProUGUI shieldText;      //Text element showing the number of shields
     public TextMeshProUGUI livesText;       //Text element showing the number of lives
@@ -23,7 +23,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI youLost;         //Text element showing the You Lost message
     public GameObject playAgainButton;
     public GameObject quitButton;
-    public Image deathImage;
 
     public TextMeshProUGUI gameOverText;	//Text element showing the Game Over message
 
@@ -103,7 +102,6 @@ public class UIManager : MonoBehaviour
 
         //Show the you lost text
         current.youLost.enabled = true;
-        current.deathImage.enabled = true;
         current.playAgainButton.SetActive(true);
         current.quitButton.SetActive(true);
     }
@@ -111,7 +109,6 @@ public class UIManager : MonoBehaviour
     public static void CleanUIonReplay()
     {
         current.youLost.enabled = false;
-        current.deathImage.enabled = false;
         current.playAgainButton.SetActive(false);
         current.quitButton.SetActive(false);
     }

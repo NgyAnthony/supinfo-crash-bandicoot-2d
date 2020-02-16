@@ -7,6 +7,7 @@ public class SceneFader : MonoBehaviour
 {
 	Animator anim;		//Reference to the Animator component
 	int fadeParamID;    //The ID of the animator parameter that fades the image out
+	int fadeParamID_Idle;    //The ID of the animator parameter that fades to idle
 
 	void Start()
 	{
@@ -15,6 +16,7 @@ public class SceneFader : MonoBehaviour
 
 		//Get the integer hash of the "Fade" parameter.
 		fadeParamID = Animator.StringToHash("Fade");
+		fadeParamID_Idle = Animator.StringToHash("FadeIdle");
 		
 		//Register this Scene Fader with the Game Manager
 		GameManager.RegisterSceneFader(this);
@@ -24,5 +26,11 @@ public class SceneFader : MonoBehaviour
 	{
 		//Play the animation that fades the UI
 		anim.SetTrigger(fadeParamID);
+	}
+	
+	public void FadeSceneIdle()
+	{
+		//Play the animation that fades the UI
+		anim.SetTrigger(fadeParamID_Idle);
 	}
 }

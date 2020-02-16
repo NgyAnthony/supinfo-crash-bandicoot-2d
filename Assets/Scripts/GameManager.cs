@@ -86,8 +86,9 @@ public class GameManager : MonoBehaviour
 		current.numberOfDeaths++;
 		UIManager.UpdateDeathUI(current.numberOfDeaths);
 
-		//If we have a scene fader, tell it to fade the scene in
+		//If we have a scene fader, tell it to fade out and then in immediatly
 		current.sceneFader.FadeSceneOut();
+		current.sceneFader.FadeSceneIdle();
 	}
 
 	public static void PlayerLost()
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
 		
 		//The game is now over
 		current.isGameOver = true;
-
+		current.sceneFader.FadeSceneOut();
 	}
 	
 	public static void PlayerWon()
