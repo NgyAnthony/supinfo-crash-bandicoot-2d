@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     
     private int trapsLayer;
     private int wumpasLayer;
+    private int bigWumpasLayer;
     private int shieldsLayer;
     
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         trapsLayer = LayerMask.NameToLayer("Traps");
         wumpasLayer = LayerMask.NameToLayer("Wumpas");
         shieldsLayer = LayerMask.NameToLayer("Shields");
+        bigWumpasLayer = LayerMask.NameToLayer("BigWumpas");
     }
 
     private void Update()
@@ -81,28 +83,51 @@ public class PlayerHealth : MonoBehaviour
 
     private void PickWumpa(Collider2D collision)
     {
-
+        
         //If the collided object isn't on the Wumpas layer OR if the player isn't currently
         //alive, exit.
         if (collision.gameObject.layer != wumpasLayer || !isAlive)
             return;
         
+        wumpasNumber += 1;
+
         //If the player gets 100 wumpas, reset the counter and add a life.
-        if (wumpasNumber == 100)
+        if (wumpasNumber >= 100)
         {
             remainingLives += 1;
-            wumpasNumber = 0;
+            wumpasNumber -= 100;
         }
         
-        wumpasNumber += 1;
-        
         //Destroy the picked wumpa.
-        Destroy(gameObject);
+        Destroy(collision.gameObject);
         
         //Tell the manager to show the number of wumpas
         UIManager.WumpaUI(wumpasNumber);
     }
+    
+    private void PickBigWumpa(Collider2D collision)
+    {
+        //If the collided object isn't on the BigWumpas layer OR if the player isn't currently
+        //alive, exit.
+        if (collision.gameObject.layer != bigWumpasLayer || !isAlive)
+            return;
 
+        wumpasNumber += 100;
+
+        //If the player gets 100 wumpas, reset the counter and add a life.
+        if (wumpasNumber >= 100)
+        {
+            remainingLives += 1;
+            wumpasNumber -= 100;
+        }
+        
+        //Destroy the picked BigWumpa.
+        Destroy(collision.gameObject);
+        
+        //Tell the manager to show the number of wumpas
+        UIManager.WumpaUI(wumpasNumber);
+    }
+    
     private void PickShield(Collider2D collision)
     {
 
@@ -118,7 +143,7 @@ public class PlayerHealth : MonoBehaviour
         }
         
         //Destroy the picked shield.
-        Destroy(gameObject);
+        Destroy(collision.gameObject);
         
         
         //Tell the manager to show the number of shields
@@ -130,6 +155,7 @@ public class PlayerHealth : MonoBehaviour
     {
         HitTrap(collision);
         PickWumpa(collision);
+        PickBigWumpa(collision);
         PickShield(collision);
     }
 

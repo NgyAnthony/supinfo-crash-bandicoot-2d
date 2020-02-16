@@ -15,12 +15,12 @@ public class Checkpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        singleCheckpoint = gameObject.transform.position;
-        playerLayer = LayerMask.NameToLayer("Player");
+        singleCheckpoint = gameObject.transform.position; //Get the position of the checkpoint flag
+        playerLayer = LayerMask.NameToLayer("Player"); //Get the reference layer of the player
 
-        checkedFlag = checkedFlagRef.GetComponent<SpriteRenderer>().sprite;
+        checkedFlag = checkedFlagRef.GetComponent<SpriteRenderer>().sprite; //Get the reference of the green/checked flag
         
-        FlagSprite = GetComponent<SpriteRenderer>();
+        FlagSprite = GetComponent<SpriteRenderer>(); //Take the sprite of the flag(unchecked)
     }
 
     public void CollideWithPlayer(Collider2D collision)
@@ -29,6 +29,8 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.layer != playerLayer)
             return;
         
+        //Check if the flag is the furtherest and if a player touched it, if so change the position of the checkpoint
+        //and set the sprite to the green flag.
         if (collision.gameObject.layer == playerLayer || singleCheckpoint.x > GameManager.checkpointPos.x)
         {
             GameManager.checkpointPos = singleCheckpoint;
