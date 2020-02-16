@@ -97,6 +97,11 @@ public class GameManager : MonoBehaviour
 		if (current == null)
 			return;
 		
+		
+		//Increment the number of player deaths and tell the UIManager
+		current.numberOfDeaths++;
+		UIManager.UpdateDeathUI(current.numberOfDeaths);
+		
 		//Display you lost text
 		UIManager.DisplayYouLostText();
 		

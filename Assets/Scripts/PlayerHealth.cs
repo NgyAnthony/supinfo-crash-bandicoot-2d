@@ -16,7 +16,15 @@ public class PlayerHealth : MonoBehaviour
     private int wumpasLayer;
     private int bigWumpasLayer;
     private int shieldsLayer;
-    
+    private int waterLayer;
+    private Animator animator;
+
+    private void Awake()
+    {
+        //Get animator reference
+        animator = GetComponent<Animator> ();
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -24,11 +32,13 @@ public class PlayerHealth : MonoBehaviour
         wumpasLayer = LayerMask.NameToLayer("Wumpas");
         shieldsLayer = LayerMask.NameToLayer("Shields");
         bigWumpasLayer = LayerMask.NameToLayer("BigWumpas");
+        waterLayer = LayerMask.NameToLayer("WaterTraps");
     }
 
     private void Update()
     {
         UIManager.LivesUI(remainingLives);
+        UIManager.WumpaUI(wumpasNumber);
     }
 
     private void DeathEvent()
@@ -38,13 +48,16 @@ public class PlayerHealth : MonoBehaviour
 
         //Disable player game object
         gameObject.SetActive(false);
+        
+        //Tell UImanager the number of remaining lives
+        UIManager.LivesUI(remainingLives);
     }
     
     private void DeadOrLost()
     {
         //Tell the Game Manager that the player lost and tell the Audio Manager to play
         //the lost audio
-        if (remainingLives < 0 & isAlive == false)
+        if (remainingLives <= 0 & isAlive == false)
         {
             GameManager.PlayerLost();
             // TODO AudioManager.PlayLostAudio();
@@ -52,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
             
         //Tell the Game Manager that the player died and tell the Audio Manager to play
         //the death audio
-        } else if (remainingLives >= 0 & isAlive == false)
+        } else if (remainingLives > 0 & isAlive == false)
         {
             GameManager.PlayerDied();
             gameObject.transform.position = GameManager.checkpointPos;
@@ -73,6 +86,32 @@ public class PlayerHealth : MonoBehaviour
         //Trap was hit, so set the player's alive state to false
         isAlive = false;
         remainingLives -= 1;
+        
+        //Kill the player.
+        DeathEvent();
+
+        //Find out if player is just dead or lost.
+        DeadOrLost();
+    }
+    
+    
+    private void HitWaterTrap(Collider2D collision)
+    {    
+        //If the collided object isn't on the Traps layer OR if the player isn't currently
+        //alive, exit. This is more efficient than string comparisons using Tags
+        if (collision.gameObject.layer != waterLayer || !isAlive)
+            return;
+        
+        //Trap was hit, so set the player's alive state to false
+        isAlive = false;
+        remainingLives -= 1;
+        
+        animator.SetBool ("isDrowning", true);
+    }
+
+    private void DrowningIsOver()
+    {
+        animator.SetBool ("isDrowning", false);
         
         //Kill the player.
         DeathEvent();
@@ -156,6 +195,7 @@ public class PlayerHealth : MonoBehaviour
         PickWumpa(collision);
         PickBigWumpa(collision);
         PickShield(collision);
+        HitWaterTrap(collision);
     }
 
 }
