@@ -31,7 +31,7 @@ public class Checkpoint : MonoBehaviour
         
         //Check if the flag is the furtherest and if a player touched it, if so change the position of the checkpoint
         //and set the sprite to the green flag.
-        if (collision.gameObject.layer == playerLayer || singleCheckpoint.x > GameManager.checkpointPos.x)
+        if (collision.gameObject.layer == playerLayer & singleCheckpoint.x > GameManager.checkpointPos.x)
         {
             GameManager.checkpointPos = singleCheckpoint;
             FlagSprite.sprite = checkedFlag;
