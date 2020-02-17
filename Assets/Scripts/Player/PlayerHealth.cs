@@ -9,7 +9,6 @@ public class PlayerHealth : MonoBehaviour
     public GameObject deathVFXPrefab;	//The visual effects for player death
     
     public bool isAlive = true;
-    private bool isAttacking = false;
     
     //Information on the player
     public int remainingLives = 2;
