@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlatformDestroy : MonoBehaviour
 {
     public GameObject deathVFXPrefab;	//The visual effects for player death
-    private int groundLayer;
+    private int groundLayer; // Reference to ground layer
 
     private void Start()
     {

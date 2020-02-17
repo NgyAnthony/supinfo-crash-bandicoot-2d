@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public GameObject deathVFXPrefab;	//The visual effects for player death
     
-    private bool isAlive = true;
+    public bool isAlive = true;
     private bool isAttacking = false;
     
     //Information on the player
@@ -22,13 +22,10 @@ public class PlayerHealth : MonoBehaviour
     private int bigWumpasLayer;
     private int shieldsLayer;
     private int waterLayer;
-    private int fallingPlatformLayer;
 
     //Reference to animator
     private Animator animator;
     
-    //Platform
-    private Rigidbody2D myPlatform;
     private void Awake()
     {
         //Get animator reference
@@ -43,7 +40,6 @@ public class PlayerHealth : MonoBehaviour
         shieldsLayer = LayerMask.NameToLayer("Shields");
         bigWumpasLayer = LayerMask.NameToLayer("BigWumpas");
         waterLayer = LayerMask.NameToLayer("WaterTraps");
-        fallingPlatformLayer = LayerMask.NameToLayer("FallingPlatforms");
         refreshUI();
     }
 
@@ -204,27 +200,6 @@ public class PlayerHealth : MonoBehaviour
         UIManager.ShieldUI(remainingShields);
     }
 
-    private void DetectPlatformFall(Collider2D collision)
-    {
-        
-        //If the collided object isn't on the Shields layer OR if the player isn't currently
-        //alive, exit.
-        if (collision.gameObject.layer != fallingPlatformLayer || !isAlive)
-            return;
-        //Get the reference to the rigibody2d of the platform
-        myPlatform = collision.gameObject.GetComponent<Rigidbody2D>();
-        
-        //Make the platform fall after 2s
-        Invoke("PlatformFall", 2f);
-    }
-
-    private void PlatformFall()
-    {
-        //Set the rigidbody2d to dynamic to make the platform fall
-        myPlatform.bodyType = RigidbodyType2D.Dynamic;
-    }
-    
-    
     //At each collision, this function checks what it has hit and decides what it will do.
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -233,7 +208,6 @@ public class PlayerHealth : MonoBehaviour
         PickBigWumpa(collision);
         PickShield(collision);
         HitWaterTrap(collision);
-        DetectPlatformFall(collision);
     }
 
 }
