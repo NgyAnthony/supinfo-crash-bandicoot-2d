@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         refreshUI();
     }
 
-    private void refreshUI()
+    public void refreshUI()
     {
         //Tell UImanager the number of remaining lives
         UIManager.LivesUI(remainingLives);

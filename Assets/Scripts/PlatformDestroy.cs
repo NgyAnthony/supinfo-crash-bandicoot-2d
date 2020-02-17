@@ -46,17 +46,14 @@ public class PlatformDestroy : MonoBehaviour
     
     public void DestroyOnGround(Collider2D collision)
     {
+        if (collision.gameObject.layer == groundLayer)
+        {
+            //Add VFX when the platform hits the ground
+            Instantiate(deathVFXPrefab, transform.position, transform.rotation);
         
-        //If the collided object isn't on the ground layer OR if the player isn't currently
-        //alive, exit.
-        if (collision.gameObject.layer != groundLayer || !playerHealth.isAlive)
-            return;
-        
-        //Add VFX when the platform hits the ground
-        Instantiate(deathVFXPrefab, transform.position, transform.rotation);
-        
-        //Destroy the gameobject
-        Destroy(gameObject);
+            //Destroy the gameobject
+            Destroy(gameObject);
+        }
     }
     
     public void OnTriggerEnter2D(Collider2D collision)

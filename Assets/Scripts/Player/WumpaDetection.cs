@@ -45,6 +45,7 @@ public class WumpaDetection : MonoBehaviour
         
         //Tell the manager to show the number of wumpas
         UIManager.WumpaUI(playerHealth.wumpasNumber);
+        playerHealth.refreshUI();
     }
     
     private void PickBigWumpa(Collider2D collision)
@@ -68,6 +69,7 @@ public class WumpaDetection : MonoBehaviour
         
         //Tell the manager to show the number of wumpas
         UIManager.WumpaUI(playerHealth.wumpasNumber);
+        playerHealth.refreshUI();
     }
     
     public void OnTriggerEnter2D(Collider2D collision)
