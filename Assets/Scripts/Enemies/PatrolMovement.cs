@@ -7,7 +7,7 @@ public class PatrolMovement : PhysicsObject
 {
     public float speed = 1;
     public bool moveRight;
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("turn"))
@@ -35,6 +35,8 @@ public class PatrolMovement : PhysicsObject
         {
             move.x = -1;
         }
+
         targetVelocity = move * speed;
+        
     }
 }
