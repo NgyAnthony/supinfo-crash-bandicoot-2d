@@ -18,7 +18,6 @@ public class CrashCrate : MonoBehaviour
     
     private void Awake()
     {
-        Debug.Log("I'm awake");
         playerLayer = LayerMask.NameToLayer("Player");
         animator = GetComponent<Animator> ();
         AttackManager = GameObject.Find("Crash").GetComponent<TornadoAttack>();
@@ -29,14 +28,12 @@ public class CrashCrate : MonoBehaviour
     {
         if (collision.gameObject.layer == playerLayer & AttackManager.isAttacking)
         {
-            Debug.Log("Got destroyed");
             animator.SetBool("isDestroyed", true);
         }
     }
 
     void DestroyAnimationOver()
     {
-        Debug.Log("AnimationOver");
         animator.SetBool("isDestroyed", false);
         playerHealth.remainingLives += 1;
         playerHealth.refreshUI();
