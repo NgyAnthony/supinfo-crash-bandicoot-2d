@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8186904677605001464}
   - component: {fileID: 8186904677605001467}
   - component: {fileID: 8186904677605001466}
+  - component: {fileID: 2246178104910765670}
+  - component: {fileID: 5944012030168161547}
   m_Layer: 10
   m_Name: AkuCrate
   m_TagString: Untagged
@@ -114,3 +116,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   featherPrefab: {fileID: 498596823907647112, guid: 21ddb824be30641fcadb4703f2ad9bd5,
     type: 3}
+--- !u!61 &2246178104910765670
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186904677605001468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.04, y: 1.08}
+    newSize: {x: 0.26, y: 0.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.04, y: 1.08}
+  m_EdgeRadius: 0
+--- !u!61 &5944012030168161547
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186904677605001468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.04, y: 1.08}
+    newSize: {x: 0.26, y: 0.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.04, y: 1.08}
+  m_EdgeRadius: 0
