@@ -12,7 +12,8 @@ public class ShooterAttack : MonoBehaviour
  
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
-
+    
+    //Function called by animation controller
     void Shoot()
     {
         //The Bullet instantiation happens here.
@@ -25,11 +26,10 @@ public class ShooterAttack : MonoBehaviour
         
         Vector2 move = Vector2.left;
 
-        
         //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
         Temporary_RigidBody.AddForce(move * Bullet_Forward_Force);
  
         //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-        Destroy(Temporary_Bullet_Handler, 5.0f);
+        Destroy(Temporary_Bullet_Handler, 1.0f);
     }
 }

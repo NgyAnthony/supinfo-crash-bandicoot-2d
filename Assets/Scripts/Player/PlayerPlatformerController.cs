@@ -9,7 +9,8 @@ public class PlayerPlatformerController : PhysicsObject
     public float jumpTakeOffSpeed = 15;
     public bool canControl = true;
     public bool attackJumpRebound = false;
-    
+    public bool springJump = false;
+
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
@@ -31,6 +32,10 @@ public class PlayerPlatformerController : PhysicsObject
             {
                 velocity.y = 10;
             }
+            else if (springJump)
+            {
+                velocity.y = 20;
+            }
             else if ((Input.GetButtonDown("Jump") && grounded)) {
                 velocity.y = jumpTakeOffSpeed;
             } else if (Input.GetButtonUp ("Jump")) 
@@ -47,6 +52,7 @@ public class PlayerPlatformerController : PhysicsObject
             }
 
             attackJumpRebound = false;
+            springJump = false;
             animator.SetBool ("isOnGround", grounded);
             animator.SetFloat ("speed", Mathf.Abs (velocity.x) / maxSpeed);
         
