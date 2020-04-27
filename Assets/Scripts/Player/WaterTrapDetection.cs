@@ -21,7 +21,6 @@ public class WaterTrapDetection : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         inputControl = GetComponent<PlayerPlatformerController>();
         animator = GetComponent<Animator> ();
-
     }
 
     private void Start()
@@ -44,14 +43,14 @@ public class WaterTrapDetection : MonoBehaviour
         inputControl.canControl = false;
         
         //Activate the drowning animation
-        animator.SetBool ("isDrowning", true);
+        animator.SetBool("isDrowning", true);
     }
     
     //Activated in the animator
     private void DrowningIsOver()
     {
         //Stop drowning
-        animator.SetBool ("isDrowning", false); 
+        animator.SetBool("isDrowning", false); 
         
         //Kill the player.
         playerHealth.DeathEvent();
@@ -61,7 +60,6 @@ public class WaterTrapDetection : MonoBehaviour
         
         //Give back input control
         inputControl.canControl = true;
-
     }
     
     public void OnTriggerEnter2D(Collider2D collision)

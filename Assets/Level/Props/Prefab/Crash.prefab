@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1183667840939282044}
   - component: {fileID: 1183667840939282047}
   - component: {fileID: 1183667840939282046}
+  - component: {fileID: 4281194106296583809}
   - component: {fileID: 1183667840939282045}
   - component: {fileID: 1183667840939282041}
   m_Layer: 9
@@ -188,6 +189,7 @@ MonoBehaviour:
   maxSpeed: 15
   jumpTakeOffSpeed: 20
   canControl: 1
+  attackJumpRebound: 0
 --- !u!114 &1183667840939281986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +242,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fda6e5834410443c974b3944cea83d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+--- !u!114 &4281194106296583809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183667840939281994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7a7cb439e204ca0896fd7af6d7fefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}

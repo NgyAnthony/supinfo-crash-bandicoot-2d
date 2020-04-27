@@ -10,9 +10,17 @@ public class TrapDetection : MonoBehaviour
     //Reference to layers
     private int trapsLayer;
     
+    //Reference to animator
+    public Animator animator;
+
+    //Reference to input control
+    private PlayerPlatformerController inputControl;
+    
     private void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
+        inputControl = GetComponent<PlayerPlatformerController>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -27,16 +35,19 @@ public class TrapDetection : MonoBehaviour
         if (collision.gameObject.layer != trapsLayer || !playerHealth.isAlive)
             return;
         
+        //Activate the dying animation
+        animator.SetBool("isDying", true);
+
         //Trap was hit, so set the player's alive state to false
         playerHealth.isAlive = false;
         playerHealth.remainingLives -= 1;
         
-        //Kill the player.
-        playerHealth.DeathEvent();
-
-        //Find out if player is just dead or lost.
-        playerHealth.DeadOrLost();
+        //Stop taking inputs
+        inputControl.canControl = false;
     }
+    
+    //DyingIsOver called, code in EnemeyDamage
+
 
     //At each collision, this function checks what it has hit and decides what it will do.
     public void OnTriggerEnter2D(Collider2D collision)

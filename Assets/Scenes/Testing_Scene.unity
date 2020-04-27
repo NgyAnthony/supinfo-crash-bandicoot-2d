@@ -1747,7 +1747,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1507853619}
   - component: {fileID: 1507853620}
-  m_Layer: 9
+  - component: {fileID: 1507853621}
+  m_Layer: 17
   m_Name: CrabTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1778,7 +1779,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.040088117, y: 0.9741529}
@@ -1794,6 +1795,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5656686, y: 0.3505652}
   m_EdgeRadius: 0
+--- !u!114 &1507853621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507853618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3491cf17af34306923f09c8ff5f7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1538706975
 GameObject:
   m_ObjectHideFlags: 0
@@ -11940,37 +11953,7 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 2085329912}
     m_ColliderPaths:
-    - - X: 170000000
-        Y: 0
-      - X: 110000000
-        Y: 0
-      - X: 110000000
-        Y: -10000000
-      - X: -50000000
-        Y: -10000000
-      - X: -50000000
-        Y: -50000000
-      - X: -70000000
-        Y: -50000000
-      - X: -70000000
-        Y: -10000000
-      - X: -160000000
-        Y: -10000000
-      - X: -160000000
-        Y: 0
-      - X: -170000000
-        Y: 0
-      - X: -170000000
-        Y: 10000000
-      - X: -180000000
-        Y: 10000000
-      - X: -180000000
-        Y: 20000000
-      - X: -230000000
-        Y: 20000000
-      - X: -230000000
-        Y: -140000000
-      - X: 540000000
+    - - X: 540000000
         Y: -140000000
       - X: 540000000
         Y: 0
@@ -11980,6 +11963,36 @@ CompositeCollider2D:
         Y: -20000000
       - X: 170000000
         Y: -20000000
+      - X: 170000000
+        Y: 0
+      - X: 110000000
+        Y: 0
+      - X: 110000000
+        Y: -10000000
+      - X: -50000000
+        Y: -10000000
+      - X: -50000000
+        Y: -50000000
+      - X: -70000000
+        Y: -50000000
+      - X: -70000000
+        Y: -10000000
+      - X: -160000000
+        Y: -10000000
+      - X: -160000000
+        Y: 0
+      - X: -170000000
+        Y: 0
+      - X: -170000000
+        Y: 10000000
+      - X: -180000000
+        Y: 10000000
+      - X: -180000000
+        Y: 20000000
+      - X: -230000000
+        Y: 20000000
+      - X: -230000000
+        Y: -140000000
   m_CompositePaths:
     m_Paths:
     - - {x: 54, y: 0}
@@ -12255,12 +12268,12 @@ PrefabInstance:
     - target: {fileID: 1183667840939281991, guid: 430c7fbcaace44e329b372c4551f93ae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.44
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1183667840939281991, guid: 430c7fbcaace44e329b372c4551f93ae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.86
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1183667840939281991, guid: 430c7fbcaace44e329b372c4551f93ae,
         type: 3}
@@ -14719,12 +14732,12 @@ PrefabInstance:
     - target: {fileID: 7072772559333849020, guid: 8ac1880ef04634f7c8ccc9e4f9be15df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.44
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7072772559333849020, guid: 8ac1880ef04634f7c8ccc9e4f9be15df,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.86
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7072772559333849020, guid: 8ac1880ef04634f7c8ccc9e4f9be15df,
         type: 3}
@@ -14783,12 +14796,12 @@ PrefabInstance:
     - target: {fileID: 7363507582742785136, guid: b619ad076f1dc41768eb14ab7f1da17f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.44
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7363507582742785136, guid: b619ad076f1dc41768eb14ab7f1da17f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.86
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7363507582742785136, guid: b619ad076f1dc41768eb14ab7f1da17f,
         type: 3}

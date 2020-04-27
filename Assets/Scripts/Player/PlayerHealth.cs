@@ -27,6 +27,28 @@ public class PlayerHealth : MonoBehaviour
         UIManager.LivesUI(remainingLives);
         UIManager.ShieldUI(remainingShields);
     }
+
+    public void takeDamage()
+    {
+        isAlive = false;
+
+        //Take 1 damage absorbed by shield or life.
+        if (remainingShields >= 1)
+        {
+            remainingShields -= 1;
+            
+        } else if (remainingShields == 0)
+        {
+            remainingLives -= 1;
+            
+            //Kill the player.
+            DeathEvent();
+
+            //Find out if player is just dead or lost.
+            DeadOrLost();
+        }
+        refreshUI();
+    }
     
     public void DeathEvent()
     {
