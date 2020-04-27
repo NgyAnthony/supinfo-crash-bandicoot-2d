@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TNTCrateDirectExplosion : MonoBehaviour
+public class NitroExplode : MonoBehaviour
 {
     
     //Reference to animator
@@ -11,34 +10,24 @@ public class TNTCrateDirectExplosion : MonoBehaviour
     
     //Reference to platform layer
     private int playerLayer;
-    
-    //Reference to tornado attack
-    private TornadoAttack AttackManager;
 
     private void Awake()
     {
         playerLayer = LayerMask.NameToLayer("Player");
         animator = GetComponent<Animator> ();
-        AttackManager = GameObject.Find("Crash").GetComponent<TornadoAttack>();
     }
 
     void TriggerBomb(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer & AttackManager.isAttacking)
+        if (collision.gameObject.layer == playerLayer)
         {
-            animator.SetBool("isBlowingUp", true);
+            animator.SetBool("isExploading", true);
         }
-    }
-    
-    void DetonationIsOver()
-    { 
-        animator.SetBool("isDetonated", false);
-        animator.SetBool("isBlowingUp", true);
     }
 
     void ExplosionIsOver()
     {
-        animator.SetBool("isBlowingUp", false);
+        animator.SetBool("isExploading", false);
         Destroy(gameObject);
     }
     
