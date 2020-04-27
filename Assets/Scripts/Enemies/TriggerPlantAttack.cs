@@ -20,7 +20,14 @@ public class TriggerPlantAttack : MonoBehaviour
     
     private void PlantAttackPlayer(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer)
+        // I don't know why, I swear to god I don't know why but if you remove this debug statement
+        // plantIsAttacking can get stuck on 'true' if you trigger the animation two times in a row...
+        Debug.Log(animator.GetBool("plantIsAttacking"));
+        if (animator.GetBool("plantIsAttacking"))
+        {
+            animator.SetBool("plantIsAttacking", false);
+        }
+        else if (collision.gameObject.layer == playerLayer)
         {
             animator.SetBool("plantIsAttacking", true);
         }

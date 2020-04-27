@@ -31,7 +31,10 @@ public class EnemyDamage : MonoBehaviour
     {    
         //If the collided object isn't on the Enemies layer OR if the player isn't currently
         //alive, exit. This is more efficient than string comparisons using Tags
-        if (collision.gameObject.layer != enemiesLayer || !playerHealth.isAlive)
+        if (collision.gameObject.layer != enemiesLayer 
+            || !playerHealth.isAlive
+            || animator.GetBool("isHurt")
+            || animator.GetBool("isDying"))
             return;
         
         //Remove HP or Shield
