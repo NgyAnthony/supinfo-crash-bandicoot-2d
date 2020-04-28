@@ -31,6 +31,7 @@ public class BouncyCrate : MonoBehaviour
             {
                 Instantiate(wumpaPrefab, transform.position, transform.rotation);
             }
+            AudioManager.PlayBreakingCrateAudio();
             animator.SetBool("isDestroyed", true);
         }
     }

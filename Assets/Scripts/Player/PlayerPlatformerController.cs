@@ -41,6 +41,7 @@ public class PlayerPlatformerController : PhysicsObject
             } else if (Input.GetButtonUp ("Jump")) 
             {
                 if (velocity.y > 0) {
+                    AudioManager.PlayJumpAudio();
                     velocity.y = velocity.y * 0.5f;
                 }
             }

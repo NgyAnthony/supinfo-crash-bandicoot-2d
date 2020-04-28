@@ -22,6 +22,7 @@ public class NitroExplode : MonoBehaviour
         if (collision.gameObject.layer == playerLayer)
         {
             animator.SetBool("isExploading", true);
+            AudioManager.PlayTntExplosionAudio();
         }
     }
 

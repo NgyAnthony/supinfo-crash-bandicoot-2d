@@ -30,6 +30,7 @@ public class TriggerPlantAttack : MonoBehaviour
         else if (collision.gameObject.layer == playerLayer)
         {
             animator.SetBool("plantIsAttacking", true);
+            AudioManager.PlayChompAudio();
         }
     }
 

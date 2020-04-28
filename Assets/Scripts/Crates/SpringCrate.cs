@@ -40,6 +40,7 @@ public class SpringCrate : MonoBehaviour
         if (collision.gameObject.layer == playerLayer & AttackManager.isAttacking)
         {
             animator.SetBool("isDestroyed", true);
+            AudioManager.PlayBreakingCrateAudio();
         }
     }
 

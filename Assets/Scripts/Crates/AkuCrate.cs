@@ -30,6 +30,8 @@ public class AkuCrate : MonoBehaviour
         {
             Instantiate(featherPrefab, transform.position, transform.rotation);
             animator.SetBool("isDestroyed", true);
+            AudioManager.PlayBreakingCrateAudio();
+
         }
     }
 

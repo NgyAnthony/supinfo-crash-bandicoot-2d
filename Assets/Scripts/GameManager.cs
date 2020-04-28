@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
 	public static void RestartScene()
 	{
 		//Play the scene restart audio
-		// TODO AudioManager.PlaySceneRestartAudio();
+		AudioManager.PlaySceneRestartAudio();
 		
 		//Remove UI of replay question
 		UIManager.CleanUIonReplay();

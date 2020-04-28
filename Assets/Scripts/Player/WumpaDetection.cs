@@ -38,8 +38,11 @@ public class WumpaDetection : MonoBehaviour
         {
             playerHealth.remainingLives += 1;
             playerHealth.wumpasNumber -= 100;
+            AudioManager.PlayHealthRecoverAudio();
         }
         
+        AudioManager.PlayWumpaCollectionAudio();
+
         //Destroy the picked wumpa.
         Destroy(collision.gameObject);
         

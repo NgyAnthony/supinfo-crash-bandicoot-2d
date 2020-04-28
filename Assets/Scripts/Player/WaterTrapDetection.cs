@@ -44,6 +44,8 @@ public class WaterTrapDetection : MonoBehaviour
         
         //Activate the drowning animation
         animator.SetBool("isDrowning", true);
+        
+        AudioManager.PlayDrownAudio();
     }
     
     //Activated in the animator

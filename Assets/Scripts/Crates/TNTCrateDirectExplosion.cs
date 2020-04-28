@@ -34,6 +34,7 @@ public class TNTCrateDirectExplosion : MonoBehaviour
     { 
         animator.SetBool("isDetonated", false);
         animator.SetBool("isBlowingUp", true);
+        AudioManager.PlayTntExplosionAudio();
     }
 
     void ExplosionIsOver()

@@ -29,6 +29,7 @@ public class CrashCrate : MonoBehaviour
         if (collision.gameObject.layer == playerLayer & AttackManager.isAttacking)
         {
             animator.SetBool("isDestroyed", true);
+            AudioManager.PlayBreakingCrateAudio();
         }
     }
 
@@ -37,6 +38,7 @@ public class CrashCrate : MonoBehaviour
         animator.SetBool("isDestroyed", false);
         playerHealth.remainingLives += 1;
         playerHealth.refreshUI();
+        AudioManager.PlayHealthRecoverAudio();
         Destroy(gameObject);
     }
     

@@ -19,7 +19,7 @@ public class ShooterAttack : MonoBehaviour
         //The Bullet instantiation happens here.
         GameObject Temporary_Bullet_Handler;
         Temporary_Bullet_Handler = Instantiate(Bullet,Bullet_Emitter.transform.position,Bullet_Emitter.transform.rotation) as GameObject;
-
+        
         //Retrieve the Rigidbody component from the instantiated Bullet and control it.
         Rigidbody2D Temporary_RigidBody;
         Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody2D>();

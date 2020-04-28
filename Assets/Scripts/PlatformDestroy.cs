@@ -50,7 +50,8 @@ public class PlatformDestroy : MonoBehaviour
         {
             //Add VFX when the platform hits the ground
             Instantiate(deathVFXPrefab, transform.position, transform.rotation);
-        
+            
+            AudioManager.PlayPlatformFalls();
             //Destroy the gameobject
             Destroy(gameObject);
         }

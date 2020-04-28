@@ -43,6 +43,7 @@ public class EnemyDamage : MonoBehaviour
             
             //Activate the hurt animation
             animator.SetBool("isHurt", true);
+            AudioManager.PlayHurtAudio();
             playerHealth.refreshUI();
         }
         else if (playerHealth.remainingShields == 0) {

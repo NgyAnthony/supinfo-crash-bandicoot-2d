@@ -33,6 +33,7 @@ public class ShieldDetection : MonoBehaviour
         {
             playerHealth.remainingShields += 1;
             
+            AudioManager.PlayShieldCollectionAudio();
             //Destroy the picked shield.
             Destroy(collision.gameObject);
         }

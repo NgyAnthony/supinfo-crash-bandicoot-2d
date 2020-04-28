@@ -33,6 +33,7 @@ public class Checkpoint : MonoBehaviour
         //and set the sprite to the green flag.
         if (collision.gameObject.layer == playerLayer & singleCheckpoint.x > GameManager.checkpointPos.x)
         {
+            AudioManager.PlayCheckpointAudio();
             GameManager.checkpointPos = singleCheckpoint;
             FlagSprite.sprite = checkedFlag;
         }

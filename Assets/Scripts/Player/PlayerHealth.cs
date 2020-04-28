@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
         {
             GameManager.PlayerLost();
             refreshUI();
-            // TODO AudioManager.PlayLostAudio();
+            AudioManager.PlayDeathAudio();
 
             
         //Tell the Game Manager that the player died and tell the Audio Manager to play
@@ -80,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
             isAlive = true;
             gameObject.SetActive(true);
             refreshUI();
-            // TODO AudioManager.PlayDeathAudio();
+            AudioManager.PlayDeathAudio();
         }
     }
 }
