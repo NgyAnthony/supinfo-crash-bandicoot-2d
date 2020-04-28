@@ -47,7 +47,7 @@ public class SpringCrate : MonoBehaviour
     void DestroyAnimationOver()
     {
         animator.SetBool("isDestroyed", false);
-        Destroy(transform.parent.gameObject);
+        Destroy(gameObject);
     }
     
     public void OnTriggerEnter2D(Collider2D collision)

@@ -27,6 +27,7 @@ public class TNTCrateDirectExplosion : MonoBehaviour
         if (collision.gameObject.layer == playerLayer & AttackManager.isAttacking)
         {
             animator.SetBool("isBlowingUp", true);
+            AudioManager.PlayTntExplosionAudio();
         }
     }
     
