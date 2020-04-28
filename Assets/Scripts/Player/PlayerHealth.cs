@@ -26,8 +26,15 @@ public class PlayerHealth : MonoBehaviour
         //Tell UImanager the number of remaining lives
         UIManager.LivesUI(remainingLives);
         UIManager.ShieldUI(remainingShields);
+        UIManager.WumpaUI(wumpasNumber);
+
     }
 
+    public void resetWumpas()
+    {
+        wumpasNumber = 0;
+    }
+    
     public void takeDamage()
     {
         isAlive = false;
@@ -67,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
         if (remainingLives <= 0 & isAlive == false)
         {
             GameManager.PlayerLost();
+            resetWumpas();
             refreshUI();
             AudioManager.PlayDeathAudio();
 
