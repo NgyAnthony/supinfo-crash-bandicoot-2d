@@ -95,8 +95,6 @@ public class AudioManager : MonoBehaviour
 		playerSource.outputAudioMixerGroup	= playerGroup;
 		voiceSource.outputAudioMixerGroup	= voiceGroup;
 
-		//Being playing the game audio
-        StartLevelAudio();
 	}
 
     void StartLevelAudio()
