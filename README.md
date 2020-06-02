@@ -8,7 +8,7 @@ Game prototype: "Crash Bandicoot 2D" with Unity
 
 
 
-![Image](https://i.imgur.com/z6y8asF.png "Image")
+![Image](https://i.imgur.com/fCj75Nj.png "Image")
 *Note for externals to Supinfo: this is a fictional crowdfunding campaign for a game*
 
 # Contrôles :
