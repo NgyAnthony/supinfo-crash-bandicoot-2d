@@ -19,6 +19,9 @@ Game prototype: "Crash Bandicoot 2D" with Unity
 # Sources/Crédits :
 Toutes les sources des assets externes sont disponibles ici: https://pastebin.com/rCuQg9Eq
 
+# Version :
+Unity 2018.4.16f1
+
 # Fonctionalités
 P.S : Regardez les compteurs pour savoir si la feature est bien implémentée
 
