@@ -3,11 +3,11 @@ Game prototype: "Crash Bandicoot 2D" with Unity
 
 # Collaborateurs
 
-- Développeur: NGUYEN Anthony | Développement du jeu, implémentation des fonctionnalités, assets et animations avec Unity/C#)
+- Développeur: NGUYEN Anthony | Développement du jeu, implémentation des fonctionnalités, assets et animations avec Unity/C#
 
-- Level designer/Graphic designer: AL ZRIR Wassim | Design des niveaux du jeu et graphismes pour le crowdfunding)
+- Level designer/Graphic designer: AL ZRIR Wassim | Design des niveaux du jeu et graphismes pour le crowdfunding
 
-- Marketing: DJABI Mohamed | Rédaction et prise de décisions commerciales en ce qui concerne le crowdfunding)
+- Marketing: DJABI Mohamed | Rédaction et prise de décisions commerciales en ce qui concerne le crowdfunding
 
 ![Image](https://i.imgur.com/fCj75Nj.png "Image")
 *Note for externals to Supinfo: this is a fictional crowdfunding campaign for a game*
