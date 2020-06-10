@@ -1,7 +1,7 @@
 # supinfo-crash-bandicoot-2d
 Game prototype: "Crash Bandicoot 2D" with Unity
 
-# Collaborateurs :
+# Collaborateurs
 
 - Développeur: NGUYEN Anthony | Développement du jeu, implémentation des fonctionnalités, assets et animations avec Unity/C#)
 
@@ -12,27 +12,27 @@ Game prototype: "Crash Bandicoot 2D" with Unity
 ![Image](https://i.imgur.com/fCj75Nj.png "Image")
 *Note for externals to Supinfo: this is a fictional crowdfunding campaign for a game*
 
-# Choix techniques :
+# Choix techniques
 - Développement: Unity et C# permettent de réutiliser le pattern MVC et une méthode de programmation orientée objet dont le développeur est déjà famillier. L'implémentation des animations se fait à travers des sprite sheets et le niveau du jeu se construit avec des tiles: ces deux méthodes sont faciles à apprendre et son bien documentées, de plus elles sont adaptées au style de jeu 2D que nous créons.
 
 - Graphisme: L'utilisation de Photoshop, Illustrator pour pouvoir créer des visuels et intégrer des éléments du jeu dans le visuel est indispensable car ce sont des outils faciles à prendre en main, de plus nous avons été formés sur ses outils à SUPINFO.
 
 - Marketing: un simple document Word détaille la stratégie marketing et les éléments clés de la campagne de crowdfunding.
 
-# Choix techniques :
+# Collaboration
 - Communication: Slack
 - Partage de fichiers: Google Drive
 - Version Control: Git/Github
 
-# Contrôles :
+# Contrôles
 - "A" pour attaquer.
 - WASD ou Flèches pour bouger.
 - Espace pour sauter.
 
-# Sources/Crédits :
+# Sources/Crédits
 Toutes les sources des assets externes sont disponibles ici: https://pastebin.com/rCuQg9Eq
 
-# Version :
+# Version
 Unity 2018.4.16f1
 
 # Fonctionalités
