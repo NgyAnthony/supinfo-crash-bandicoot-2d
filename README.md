@@ -19,6 +19,11 @@ Game prototype: "Crash Bandicoot 2D" with Unity
 
 - Marketing: un simple document Word détaille la stratégie marketing et les éléments clés de la campagne de crowdfunding.
 
+# Choix techniques :
+- Communication: Slack
+- Partage de fichiers: Google Drive
+- Version Control: Git/Github
+
 # Contrôles :
 - "A" pour attaquer.
 - WASD ou Flèches pour bouger.
